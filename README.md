@@ -19,9 +19,9 @@ the board.
 To connect opposite sides of the board, 
 each player must use the colour matching the sides and form an
 uninterrupted chain of discs between those sides.
-<br>
+<br> <br>
 The chain of discs can also be formed by the allied colours, which is different for each player:
-<br>
+<br> <br>
 ![](./images/allied_colours.png)
 
 
