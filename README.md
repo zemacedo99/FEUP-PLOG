@@ -74,56 +74,56 @@ Current Player is represented by ...
 <br><br>
 Exemple of representation of game states:
 <br>
-*Example of initial board*
-initial_board([
-    [X,X,X,X,X],
-    [X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X],
-    [X,X,X,X,X]
-]).
+*Example of initial board*<br>
+initial_board([<br>
+    [X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X]<br>
+]).<br>
 <br> <br>
-*Example of intermediate board*
-intermediate_board([
-    [X,X,O,X,X],
-    [X,X,X,O,X,X,X,X],
-    [X,X,X,X,P,X,X,X,X],
-    [X,X,X,X,P,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X],
-    [X,X,X,X,G,X,X,X,X,X,X,X],
-    [X,X,X,X,X,G,X,X,X,X,X],
-    [X,X,X,X,O,G,X,X,X,X],
-    [X,X,X,X,G,O,X,X,X],
-    [X,X,X,X,O,X,X,X],
-    [X,X,O,X,X]
-]).
+*Example of intermediate board*<br>
+intermediate_board([<br>
+    [X,X,O,X,X],<br>
+    [X,X,X,O,X,X,X,X],<br>
+    [X,X,X,X,P,X,X,X,X],<br>
+    [X,X,X,X,P,X,X,X,X,X],<br>
+    [X,X,X,X,X,O,X,X,X,X,X],<br>
+    [X,X,X,X,X,O,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,O,X,X,X,X,X],<br>
+    [X,X,X,X,G,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,X,G,X,X,X,X,X],<br>
+    [X,X,X,X,O,G,X,X,X,X],<br>
+    [X,X,X,X,G,O,X,X,X],<br>
+    [X,X,X,X,O,X,X,X],<br>
+    [X,X,O,X,X]<br>
+]).<br>
 <br> <br>
-*Example of final board*
-final_board([
-    [X,X,O,X,X],
-    [X,X,X,O,X,X,X,X],
-    [X,X,X,X,P,O,X,X,X],
-    [X,X,X,X,P,O,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X,X],
-    [X,X,X,X,P,O,X,X,X,X,X],
-    [X,X,X,P,G,X,X,X,X,X,X,X],
-    [X,X,X,X,P,G,X,X,X,X,X],
-    [X,X,X,X,O,G,X,X,X,X],
-    [X,X,X,X,G,O,X,X,X],
-    [X,X,X,X,O,X,X,X],
-    [X,X,O,X,X]
-]).
+*Example of final board*<br>
+final_board([<br>
+    [X,X,O,X,X],<br>
+    [X,X,X,O,X,X,X,X],<br>
+    [X,X,X,X,P,O,X,X,X],<br>
+    [X,X,X,X,P,O,X,X,X,X],<br>
+    [X,X,X,X,X,O,X,X,X,X,X],<br>
+    [X,X,X,X,X,O,X,X,X,X,X,X],<br>
+    [X,X,X,X,P,O,X,X,X,X,X],<br>
+    [X,X,X,P,G,X,X,X,X,X,X,X],<br>
+    [X,X,X,X,P,G,X,X,X,X,X],<br>
+    [X,X,X,X,O,G,X,X,X,X],<br>
+    [X,X,X,X,G,O,X,X,X],<br>
+    [X,X,X,X,O,X,X,X],<br>
+    [X,X,O,X,X]<br>
+]).<br>
 
 -----
 ## Visualizing the game
