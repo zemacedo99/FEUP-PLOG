@@ -23,7 +23,7 @@ uninterrupted chain of discs between those sides.
 The chain of discs can also be formed by the allied colours, which is different for each player:
 ![](./images/allied_colours.png)
 
-<br>
+
 ### Gameplay
 Every turn a player take a disc from the supply and place it on any empty space on the board. <br>
 If a connection is made between opposite sides,
