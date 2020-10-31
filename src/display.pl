@@ -10,9 +10,10 @@ display_main_menu:-
     write('-----------------------------------\n'),
     write('-----       Alliances         -----\n'),
     write('-----                         -----\n'),
-    write('-----     1: 2 players        -----\n'),
-    write('-----     2: 1 player vs. PC  -----\n'),
-    write('-----     3: Exit             -----\n'),
+    write('-----     1: Human / Human    -----\n'),
+    write('-----     2: Human / PC       -----\n'),
+    write('-----     3: PC / PC          -----\n'),
+    write('-----     4: Exit             -----\n'),
     write('-----                         -----\n'),
     write('-----------------------------------\n').
 
@@ -25,13 +26,13 @@ display_not_yet_implemented:-
     write('-----     available yet.      -----\n'),
     write('-----                         -----\n'),
     write('-----     0: Go back          -----\n'),
-    write('-----     3: Exit             -----\n'),
+    write('-----     4: Exit             -----\n'),
     write('-----------------------------------\n').
 
 /*
 * Size of rows, from the top down: 5, 8, 9, 10, 11, 12, 11, 12, 11, 10, 9, 8, 5
 */
-initial_board([
+initial([
     [X,X,X,X,X],
     [X,X,X,X,X,X,X,X],
     [X,X,X,X,X,X,X,X,X],
@@ -82,7 +83,7 @@ final_board([
 ]).
 
 
-display_game(Board):-
+display_game(Board, Player):-
     display_board(Board),
     write('Choose an option (G, P, O): ').
 
@@ -90,35 +91,34 @@ display_board(Board):-
     write('\n\n\n\n'),
     write('       |OOOOO|       \n'),
     display_current_board_colors(Board, 0),
-    write('       |OOOOO|       '),
-    write('______________________'),
+    write('       |OOOOO|       \n'),
+    write('______________________\n'),
     write('G - Green\n'),
     write('P - Purple\n'),
     write('O - Orange\n').
 
 
 /* The ! mark prevents backtracking - when the board is empty goes to previous function */
-display_current_board_colors([], RowIndex):- !. 
+display_current_board_colors([], _ ):- !.
 
 /* Iterates over the board to get the row and displays it */
-display_current_board_colors(Board, RowIndex):-
-    nth0(RowIndex, Board, Row),
+display_current_board_colors([Row | OtherRows], RowIndex):-
+    /*nth0(RowIndex, Board, Row),*/
     display_board_structure1(RowIndex),
     display_color(Row, RowIndex),
-    write('hereeeee'),
     display_board_structure2(RowIndex),
     NextRowIndex is RowIndex + 1,
-    display_current_board_colors(Board, NextRowIndex).
+    display_current_board_colors(OtherRows, NextRowIndex).
 
 /* The ! mark prevents backtracking - when the row is empty goes to previous function */
-display_color([], ColorIndex):- !. 
+display_color([], _ ):- !. 
 
 /* Displays the color, or white space, in every position of a certain row*/
-display_color(Row, ColorIndex):-
-    nth0(ColorIndex, Row, Color),
+display_color([Color | RestRow], ColorIndex):-
+    /*nth0(ColorIndex, Row, Color),*/
     write_color(Color),
     NextColorIndex is ColorIndex + 1,
-    display_color(Row, NextColorIndex).
+    display_color(RestRow, NextColorIndex).
 
 /* Write white space if that position in the board is unoccupied*/
 write_color('X'):-
@@ -126,15 +126,15 @@ write_color('X'):-
 
 /*Writes the Green symbol*/
 write_color('G'):-
-    write('G').
+    write('Greeeeeeen').
 
 /*Writes the Purple symbol*/
 write_color('P'):-
-    write('P').
+    write('Purpleeeeee').
 
 /*Writes the Orange symbol*/
 write_color('O'):-
-    write('O').
+    write('Oraaaangeee').
 
 
 /*Board structure fillers to make the board look like the real game - because the board is an hexagon and has a different structure depending on the row*/ 

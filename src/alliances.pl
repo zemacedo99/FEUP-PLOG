@@ -8,12 +8,14 @@
 :- consult('display.pl').
 :- consult('logic.pl').
 :- use_module(library(system)).
+:- use_module(library(random)).
 
 
 /* Starts the game and displays start menu.
 *  Also reads option the player selects.
 */
 play:- 
+    /*repeat,*/
     display_main_menu,
     read(Option),
     /*valid_option(Option).*/
@@ -21,30 +23,42 @@ play:-
 
 
 /* Validates the player's chosen option*/
-/*valid_option(Option):-
-    
-    option_is_valid(Option)
+/* This validation function is commented because it's failing sometimes
+
+valid_option(Option):-
+    (\+ num(Option)) ->
+    write('Invalid option. Please try again. \n\n '),
+    fail
     ;
-    write('Invalid option. Please try again. ').*/
+    option_is_valid(Option).
+*/
 
 
 /*Go back option*/
 option_is_valid(0):-
     play.
 
-/* 2 players option*/
+/* Human vs Human option*/
 option_is_valid(1):-
-    initial_board(Board),
-    display_game(Board).
+    initial(Board),
+    random_select(Player, [1, 2], _),
+    display_game(Board, Player).
     
 
-/* 1 player vs. PC option*/
+/* Human vs. PC option*/
 option_is_valid(2):-
     display_not_yet_implemented,
     read(Option),
     /*valid_option(Option).*/
     option_is_valid(Option).
 
-/* Exit option */
+/* PC vs. PC option*/
 option_is_valid(3):-
+    display_not_yet_implemented,
+    read(Option),
+    /*valid_option(Option).*/
+    option_is_valid(Option).
+
+/* Exit option */
+option_is_valid(4):-
     write('Exiting game...\n').
