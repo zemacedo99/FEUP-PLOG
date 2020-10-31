@@ -19,7 +19,6 @@ To connect opposite sides of the board, each player must form an
 uninterrupted chain of discs between those sides.
 <br>
 
-<br>
 You can find a more explanation
 [here](./pdf/ALLIANCES_EN.pdf)
 or find it online: 
