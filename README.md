@@ -22,7 +22,7 @@ uninterrupted chain of discs between those sides.
 
 
 <br>
-You can find a more explanation [here](./pdf/ALLIANCES_EN.pdf)
+You can find a more explanation ![here](./pdf/ALLIANCES_EN.pdf)
 or find it online: 
 <br>
 https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf;
