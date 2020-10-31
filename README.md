@@ -12,14 +12,17 @@
 ## Game Description
 Alliances, a 2-player game by Markus Hagenauer.
 <br>
+<br>
 Alliances is a tricky game requires you to connect opposite sides of
 the board.
 To connect opposite sides of the board, each player must form an
 uninterrupted chain of discs between those sides.
+<br>
 
 
-You can find a more explanation
-[here](./pdf/ALLIANCES_EN.pdf)
+
+<br>
+You can find a more explanation [here](./pdf/ALLIANCES_EN.pdf)
 or find it online: 
 <br>
 https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf;
@@ -31,7 +34,8 @@ https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 <br>
 
 ![Board](./images/board.png)
-*Fig. 1: The Board of Alliances*
+<br>
+*Fig. 1: Board of Alliances*
 
 <br>
 <br>
