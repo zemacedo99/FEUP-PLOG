@@ -74,7 +74,8 @@ Current Player is represented by ...
 <br><br>
 Exemple of representation of game states:
 <br>
-*Example of initial board*<br>
+<br>
+*Example of initial board:*<br>
 initial_board([<br>
     [X,X,X,X,X],<br>
     [X,X,X,X,X,X,X,X],<br>
@@ -91,7 +92,7 @@ initial_board([<br>
     [X,X,X,X,X]<br>
 ]).<br>
 <br> <br>
-*Example of intermediate board*<br>
+*Example of intermediate board:*<br>
 intermediate_board([<br>
     [X,X,O,X,X],<br>
     [X,X,X,O,X,X,X,X],<br>
@@ -108,7 +109,7 @@ intermediate_board([<br>
     [X,X,O,X,X]<br>
 ]).<br>
 <br> <br>
-*Example of final board*<br>
+*Example of final board:*<br>
 final_board([<br>
     [X,X,O,X,X],<br>
     [X,X,X,O,X,X,X,X],<br>
