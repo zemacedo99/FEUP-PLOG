@@ -10,7 +10,8 @@
 ---
 
 ## Game Description
-
+Alliances, a 2-player game by Markus Hagenauer.
+<br>
 Alliances is a tricky game requires you to connect opposite sides of
 the board.
 To connect opposite sides of the board, each player must form an
@@ -20,7 +21,10 @@ uninterrupted chain of discs between those sides.
 You can find a more explanation
 [here](./pdf/ALLIANCES_EN.pdf)
 or find it online:
-https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf
+https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf;
+https://boardgamegeek.com/boardgame/302399/alliances;
+and a gameplay video 
+https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 
 ![Board](./images/board.png)
 *Fig. 1: The Board of Alliances*
@@ -30,11 +34,24 @@ https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf
 
 ----
 ## Internal representation of the state of the game
-
-
-<br>
 <br>
 
+The board is represented by a list of lists with differents lengths. To exemplify, it was created 3 boards:
+an [initial board](./boards/InitialBoard.pl), 
+an [intermediate board](./boards/InterBoard.pl)
+and a [final board](./boards/finalBoard.pl). 
+The first list describes the state of the game: the number of discs in the Gain and Risk areas of both players, and the number of discs that the players have. The rest of the lists describes the board. They vary in size.
+
+To represent the discs and the differents spaces of the board, several atoms where used. The following table makes the correspondence between the atoms and their meaning:
+
+| Atom | Meaning                         |
+| ---- | ------------------------------- |
+|  X   | Empty space on the board        |
+|  G   | Green Disc                      |
+|  P   | Purple Disc                     |
+|  O   | Orange Disc                     |
+
+<br>
 -----
 ## Visualizing the game
 
