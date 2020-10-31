@@ -26,7 +26,7 @@ https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf;
 <br>
 https://boardgamegeek.com/boardgame/302399/alliances;
 <br>
-*gameplay video: *
+*gameplay video:*
 https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 <br>
 
