@@ -86,6 +86,10 @@ final_board([
 display_game(Board, Player):-
     display_board(Board),
     write('Choose an option (G, P, O): ').
+    /* need to read chosen option, update board,
+    *  switch player and loop to display_game with updated Board and updated Player :)
+    */
+
 
 display_board(Board):-
     write('\n\n\n\n'),
@@ -126,15 +130,15 @@ write_color('X'):-
 
 /*Writes the Green symbol*/
 write_color('G'):-
-    write('Greeeeeeen').
+    write('G').
 
 /*Writes the Purple symbol*/
 write_color('P'):-
-    write('Purpleeeeee').
+    write('P').
 
 /*Writes the Orange symbol*/
 write_color('O'):-
-    write('Oraaaangeee').
+    write('O').
 
 
 /*Board structure fillers to make the board look like the real game - because the board is an hexagon and has a different structure depending on the row*/ 
