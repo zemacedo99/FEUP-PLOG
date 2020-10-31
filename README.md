@@ -57,13 +57,11 @@ https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 ## Internal representation of the state of the game
 <br>
 
-The board is represented by a list of lists with differents lengths. To exemplify, it was created 3 boards:
-an [initial board](./boards/InitialBoard.pl), 
-an [intermediate board](./boards/InterBoard.pl)
-and a [final board](./boards/finalBoard.pl). 
-The first list describes the state of the game: the number of discs in the Gain and Risk areas of both players, and the number of discs that the players have. The rest of the lists describes the board. They vary in size.
+The current state of the game is stored in a list of lists with differents lengths. <br>
+The list represents the board, and the lists within that list represents the different lines of the board. <br>
+The lines of the board have multiple atoms that represent the discs and the spaces of the board. <br>
 
-To represent the discs and the differents spaces of the board, several atoms where used. The following table makes the correspondence between the atoms and their meaning:
+Atoms meaning:
 
 | Atom | Meaning                         |
 | ---- | ------------------------------- |
@@ -72,10 +70,10 @@ To represent the discs and the differents spaces of the board, several atoms whe
 |  P   | Purple Disc                     |
 |  O   | Orange Disc                     |
 
-<br>
+Current Player is represented by ... 
+
 -----
 ## Visualizing the game
-
-
 <br>
+
 <br>
