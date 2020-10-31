@@ -24,8 +24,7 @@ valid_option(Option):-
     
     option_is_valid(Option)
     ;
-    write('Invalid option. Please try again. \n'),
-    fail).
+    write('Invalid option. Please try again. \n').
 
 
 /*Go back option*/
@@ -46,4 +45,4 @@ option_is_valid(2):-
 
 /* Exit option */
 option_is_valid(3):-
-    write('Exiting game...\n')
+    write('Exiting game...\n').
