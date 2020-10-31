@@ -20,11 +20,16 @@ uninterrupted chain of discs between those sides.
 
 You can find a more explanation
 [here](./pdf/ALLIANCES_EN.pdf)
-or find it online:
+or find it online: 
+<br>
 https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf;
+<br>
 https://boardgamegeek.com/boardgame/302399/alliances;
-and a gameplay video 
+<br>
+*gameplay video: *
+<br>
 https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
+<br>
 
 ![Board](./images/board.png)
 *Fig. 1: The Board of Alliances*
