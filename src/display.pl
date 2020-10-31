@@ -88,7 +88,7 @@ display_game(Board):-
 
 display_board(Board):-
     write('\n\n\n\n'),
-    write('       |OOOOO|       '),
+    write('       |OOOOO|       \n'),
     display_current_board_colors(Board, 0),
     write('       |OOOOO|       '),
     write('______________________'),
@@ -104,7 +104,8 @@ display_current_board_colors([], RowIndex):- !.
 display_current_board_colors(Board, RowIndex):-
     nth0(RowIndex, Board, Row),
     display_board_structure1(RowIndex),
-    display_color(Row, 0),
+    display_color(Row, RowIndex),
+    write('hereeeee'),
     display_board_structure2(RowIndex),
     NextRowIndex is RowIndex + 1,
     display_current_board_colors(Board, NextRowIndex).
@@ -120,19 +121,19 @@ display_color(Row, ColorIndex):-
     display_color(Row, NextColorIndex).
 
 /* Write white space if that position in the board is unoccupied*/
-write_color(X):-
-    write(' ').
+write_color('X'):-
+    write('X').
 
 /*Writes the Green symbol*/
-write_color(G):-
+write_color('G'):-
     write('G').
 
 /*Writes the Purple symbol*/
-write_color(P):-
+write_color('P'):-
     write('P').
 
 /*Writes the Orange symbol*/
-write_color(O):-
+write_color('O'):-
     write('O').
 
 
@@ -141,76 +142,76 @@ display_board_structure1(0):-
     write('       |').
 
 display_board_structure2(0):-
-    write('|       ').
+    write('|       \n').
 
 display_board_structure1(1):-
     write('GGGG|').
 
 display_board_structure2(1):-
-    write('|PPPP').
+    write('|PPPP\n').
 
 display_board_structure1(2):-
     write('GGG|').
 
 display_board_structure2(2):-
-    write('|PPP').
+    write('|PPP\n').
 
 display_board_structure1(3):-
     write('GG|').
 
 display_board_structure2(3):-
-    write('|PP').
+    write('|PP\n').
 
 display_board_structure1(4):-
     write('G|').
 
 display_board_structure2(4):-
-    write('|P').
+    write('|P\n').
 
 display_board_structure1(5):-
     write('|').
 
 display_board_structure2(5):-
-    write('|').
+    write('|\n').
 
 display_board_structure1(6):-
     write(' |').
 
 display_board_structure2(6):-
-    write('| ').
+    write('| \n').
 
 display_board_structure1(7):-
     write('|').
 
 display_board_structure2(7):-
-    write('|').
+    write('|\n').
 
 display_board_structure1(8):-
     write('P|').
 
 display_board_structure2(8):-
-    write('|G').
+    write('|G\n').
 
 display_board_structure1(9):-
     write('PP|').
 
 display_board_structure2(9):-
-    write('|GG').
+    write('|GG\n').
 
 display_board_structure1(10):-
     write('PPP|').
 
 display_board_structure2(10):-
-    write('|GGG').
+    write('|GGG\n').
 
 display_board_structure1(11):-
     write('PPPP|').
 
 display_board_structure2(11):-
-    write('|GGGG').
+    write('|GGGG\n').
 
 display_board_structure1(12):-
     write('       |').
 
 display_board_structure2(12):-
-    write('|       ').
+    write('|       \n').

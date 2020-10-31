@@ -16,16 +16,16 @@
 play:- 
     display_main_menu,
     read(Option),
-    valid_option(Option).
+    /*valid_option(Option).*/
+    option_is_valid(Option).
 
 
 /* Validates the player's chosen option*/
-valid_option(Option):-
+/*valid_option(Option):-
     
     option_is_valid(Option)
     ;
-    write('Invalid option. Please try again. \n'),
-    fail).
+    write('Invalid option. Please try again. ').*/
 
 
 /*Go back option*/
@@ -42,8 +42,9 @@ option_is_valid(1):-
 option_is_valid(2):-
     display_not_yet_implemented,
     read(Option),
-    valid_option(Option).
+    /*valid_option(Option).*/
+    option_is_valid(Option).
 
 /* Exit option */
 option_is_valid(3):-
-    write('Exiting game...\n')
+    write('Exiting game...\n').
