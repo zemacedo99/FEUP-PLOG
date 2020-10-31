@@ -15,9 +15,23 @@ Alliances, a 2-player game by Markus Hagenauer.
 <br>
 Alliances is a tricky game requires you to connect opposite sides of
 the board.
-To connect opposite sides of the board, each player must form an
+<br>
+To connect opposite sides of the board, 
+each player must use the colour matching the sides and form an
 uninterrupted chain of discs between those sides.
 <br>
+The chain of discs can also be formed by the allied colours, which is different for each player:
+![](./images/allied_colours.png)
+
+<br>
+### Gameplay
+Every turn a player take a disc from the supply and place it on any empty space on the board. <br>
+If a connection is made between opposite sides,
+with an uninterrupted chain of discs of the sides colour and/or the allied colour,
+the player wins the colour of the connected sides.
+
+### Goal
+Win 2 colours. A player win a colour by being the first to connect its to sides of the board.
 
 You can find a more explanation
 [here](./pdf/ALLIANCES_EN.pdf)
