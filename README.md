@@ -34,7 +34,8 @@ https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 <br>
 
 ![Board](./images/board.png)
-*Fig. 1: The Board of Alliances*
+<br>
+*Fig. 1: Board of Alliances*
 
 <br>
 <br>
