@@ -44,7 +44,6 @@ https://boardgamegeek.com/boardgame/302399/alliances;
 <br>
 *gameplay video:*
 https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
-<br>
 
 ----
 ## Internal representation of the state of the game
@@ -126,5 +125,6 @@ The predicate of the game state visualization was implemented by calling the pre
 Then the predicate **random_select** select a random player and returns the variable 'Player',
 the predicate **display_game** is called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
 Here's an example of the game state visualization:
+<br>
 ![Board](./images/board.png)
 *Board of Alliances*
