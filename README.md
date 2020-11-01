@@ -46,13 +46,6 @@ https://boardgamegeek.com/boardgame/302399/alliances;
 https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 <br>
 
-![Board](./images/board.png)
-<br>
-*Fig. 1: Board of Alliances*
-
-<br>
-<br>
-
 ----
 ## Internal representation of the state of the game
 <br>
@@ -70,13 +63,13 @@ Atoms meaning:
 |  P   | Purple Disc                     |
 |  O   | Orange Disc                     |
 
-Current Player is represented by ... 
+Current Player is represented by the variable 'Player'.
 <br><br>
 Exemple of representation of game states:
 <br>
 <br>
 *Example of initial board:*<br>
-initial_board([<br>
+initial([<br>
     [X,X,X,X,X],<br>
     [X,X,X,X,X,X,X,X],<br>
     [X,X,X,X,X,X,X,X,X],<br>
@@ -129,5 +122,11 @@ final_board([<br>
 -----
 ## Visualizing the game
 <br>
-
+The predicate of the game state visualization was implemented by calling the predicate **initial** that returns the variable 'Board' with the initial game state (empty board).<br>
+Then the predicate **random_select** select a random player and returns the variable 'Player',
+the predicate **display_game** is called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
+Here's an example of the game state visualization:<br>
+![Board](./images/board.png)
+<br>
+*Board of Alliances*
 <br>
