@@ -93,9 +93,9 @@ display_game(Board, Player):-
 
 display_board(Board):-
     write('\n\n\n\n'),
-    write('       |OOOOO|       \n'),
+    write('         |OOOOOOOOOOOOOOO|       \n'),
     display_current_board_colors(Board, 0),
-    write('       |OOOOO|       \n'),
+    write('         |OOOOOOOOOOOOOOO|       \n'),
     write('______________________\n'),
     write('G - Green\n'),
     write('P - Purple\n'),
@@ -126,7 +126,7 @@ display_color([Color | RestRow], ColorIndex):-
 
 /* Write white space if that position in the board is unoccupied*/
 write_color('X'):-
-    write('X').
+    write(' X ').
 
 /*Writes the Green symbol*/
 write_color('G'):-
@@ -143,7 +143,7 @@ write_color('O'):-
 
 /*Board structure fillers to make the board look like the real game - because the board is an hexagon and has a different structure depending on the row*/ 
 display_board_structure1(0):-
-    write('       |').
+    write('         |').
 
 display_board_structure2(0):-
     write('|       \n').
@@ -215,7 +215,7 @@ display_board_structure2(11):-
     write('|GGGG\n').
 
 display_board_structure1(12):-
-    write('       |').
+    write('         |').
 
 display_board_structure2(12):-
     write('|       \n').
