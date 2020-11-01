@@ -125,8 +125,6 @@ final_board([<br>
 The predicate of the game state visualization was implemented by calling the predicate **initial** that returns the variable 'Board' with the initial game state (empty board).<br>
 Then the predicate **random_select** select a random player and returns the variable 'Player',
 the predicate **display_game** is called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
-Here's an example of the game state visualization:<br>
+Here's an example of the game state visualization:
 ![Board](./images/board.png)
-<br>
 *Board of Alliances*
-<br>
