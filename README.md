@@ -13,26 +13,26 @@
 Alliances, a 2-player game by Markus Hagenauer.
 <br>
 <br>
-Alliances is a tricky game requires you to connect opposite sides of
+Alliances is a tricky game that requires you to connect opposite sides of
 the board.
 <br>
 To connect opposite sides of the board, 
-each player must use the colour matching the sides and form an
+each player must use the color matching the sides and form an
 uninterrupted chain of discs between those sides.
 <br> <br>
-The chain of discs can also be formed by the allied colours, which is different for each player:
+The chain of discs can also be formed by the allied colors, which is different for each player:
 <br> <br>
 ![](./images/allied_colours.png)
 
 
 ### Gameplay
-Every turn a player take a disc from the supply and place it on any empty space on the board. <br>
+Every turn a player takes a disc from the supply and places it on any empty space on the board. <br>
 If a connection is made between opposite sides,
-with an uninterrupted chain of discs of the sides colour and/or the allied colour,
-the player wins the colour of the connected sides.
+with an uninterrupted chain of discs of the sides' color and/or the allied colour,
+the player wins the color of the connected sides.
 
 ### Goal
-Win 2 colours. A player win a colour by being the first to connect its to sides of the board.
+Win 2 colors. A player wins a color by being the first to connect its two sides on the board.
 
 You can find a more explanation
 [here](./pdf/ALLIANCES_EN.pdf)
@@ -50,8 +50,8 @@ https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 <br>
 
 The current state of the game is stored in a list of lists with differents lengths. <br>
-The list represents the board, and the lists within that list represents the different lines of the board. <br>
-The lines of the board have multiple atoms that represent the discs and the spaces of the board. <br>
+The list represents the board, and the lists within that list represents the different rows of the board. <br>
+The rows of the board have multiple atoms that represent the discs and the empty spaces of the board. <br>
 
 Atoms meaning:
 
@@ -120,10 +120,9 @@ final_board([<br>
 
 -----
 ## Visualizing the game
-<br>
 The predicate of the game state visualization was implemented by calling the predicate **initial** that returns the variable 'Board' with the initial game state (empty board).<br>
-Then the predicate **random_select** select a random player and returns the variable 'Player',
-the predicate **display_game** is called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
+Then the predicate **random_select** selects a random player to start and returns the variable 'Player',
+the predicate **display_game** is then called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
 Here's an example of the game state visualization:
 <br>
 ![Board](./images/board.png)
