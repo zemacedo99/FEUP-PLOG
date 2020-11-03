@@ -1,0 +1,16 @@
+  ___
+ /   \
+|  X  | 
+ \___/ 
+
+
+realtorio: adicionar dimensao do tabuleiro ( hexagno com base 7 onde os extremos não são incluidos ).
+	   adicionar foto do tabuleiro de jogo
+	   tentar adicionar foto do tabuleiro intermedio
+	   adicionar foto do tabuleiro final de jogo
+
+cordenadas dos pontos 
+
+diminuir codigo redundante 
+	ex: display_board_structure
+
