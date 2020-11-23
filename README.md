@@ -16,6 +16,11 @@ Alliances, a 2-player game by Markus Hagenauer.
 Alliances is a tricky game that requires you to connect opposite sides of
 the board.
 <br>
+The board has a shape of a 7x7 hexagon without the edges.
+<br>
+![](./images/alliances_real.jpg)
+<br>
+<br>
 To connect opposite sides of the board, 
 each player must use the color matching the sides and form an
 uninterrupted chain of discs between those sides.
@@ -24,15 +29,22 @@ The chain of discs can also be formed by the allied colors, which is different f
 <br> <br>
 ![](./images/allied_colours.png)
 
+### Game Components
+1 gameboard, 42 green discs, 42 orange discs, 42 purple discs, 2 silver discs
 
 ### Gameplay
 Every turn a player takes a disc from the supply and places it on any empty space on the board. <br>
 If a connection is made between opposite sides,
 with an uninterrupted chain of discs of the sides' color and/or the allied colour,
 the player wins the color of the connected sides.
+<br>
+![](./images/win_board.png)
+<br>
 
 ### Goal
-Win 2 colors. A player wins a color by being the first to connect its two sides on the board.
+Win 2 colors. A player wins a color by being the first to connect its two sides on the board or if a move makes it impossible for either player to connect a
+particular color (by fencing it off), then the blocked player's opponent wins that color. 
+<br>![](./images/win2_board.png)<br>
 
 You can find a more explanation
 [here](./pdf/ALLIANCES_EN.pdf)
@@ -124,6 +136,7 @@ The predicate of the game state visualization was implemented by calling the pre
 Then the predicate **random_select** selects a random player to start and returns the variable 'Player',
 the predicate **display_game** is then called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
 Here's an example of the game state visualization:
+*Board of Alliances*
 <br>
 ![Board](./images/board.png)
-*Board of Alliances*
+
