@@ -15,8 +15,8 @@ Alliances, a 2-player game by Markus Hagenauer.
 <br>
 Alliances is a tricky game that requires you to connect opposite sides of
 the board.
-<br>
-The board has a shape of a 7x7 hexagon without the edges.
+<br><br>
+*The board has a shape of a 7x7 hexagon without the edges.*
 <br>
 ![](./images/alliances_real.jpg)
 <br>
@@ -38,12 +38,14 @@ If a connection is made between opposite sides,
 with an uninterrupted chain of discs of the sides' color and/or the allied colour,
 the player wins the color of the connected sides.
 <br>
+
 ![](./images/win_board.png)
 <br>
 
 ### Goal
 Win 2 colors. A player wins a color by being the first to connect its two sides on the board or if a move makes it impossible for either player to connect a
 particular color (by fencing it off), then the blocked player's opponent wins that color. 
+
 <br>![](./images/win2_board.png)<br>
 
 You can find a more explanation
@@ -78,57 +80,67 @@ Current Player is represented by the variable 'Player'.
 <br><br>
 Exemple of representation of game states:
 <br>
+
+```
+Example of initial board:
+initial([
+    [X,X,X,X,X],
+    [X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X,X],
+    [X,X,X,X,X,X,X,X],
+    [X,X,X,X,X]
+]).
+```
+
 <br>
-*Example of initial board:*<br>
-initial([<br>
-    [X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X]<br>
-]).<br>
-<br> <br>
-*Example of intermediate board:*<br>
-intermediate_board([<br>
-    [X,X,O,X,X],<br>
-    [X,X,X,O,X,X,X,X],<br>
-    [X,X,X,X,P,X,X,X,X],<br>
-    [X,X,X,X,P,X,X,X,X,X],<br>
-    [X,X,X,X,X,O,X,X,X,X,X],<br>
-    [X,X,X,X,X,O,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,O,X,X,X,X,X],<br>
-    [X,X,X,X,G,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,X,G,X,X,X,X,X],<br>
-    [X,X,X,X,O,G,X,X,X,X],<br>
-    [X,X,X,X,G,O,X,X,X],<br>
-    [X,X,X,X,O,X,X,X],<br>
-    [X,X,O,X,X]<br>
-]).<br>
-<br> <br>
-*Example of final board:*<br>
-final_board([<br>
-    [X,X,O,X,X],<br>
-    [X,X,X,O,X,X,X,X],<br>
-    [X,X,X,X,P,O,X,X,X],<br>
-    [X,X,X,X,P,O,X,X,X,X],<br>
-    [X,X,X,X,X,O,X,X,X,X,X],<br>
-    [X,X,X,X,X,O,X,X,X,X,X,X],<br>
-    [X,X,X,X,P,O,X,X,X,X,X],<br>
-    [X,X,X,P,G,X,X,X,X,X,X,X],<br>
-    [X,X,X,X,P,G,X,X,X,X,X],<br>
-    [X,X,X,X,O,G,X,X,X,X],<br>
-    [X,X,X,X,G,O,X,X,X],<br>
-    [X,X,X,X,O,X,X,X],<br>
-    [X,X,O,X,X]<br>
-]).<br>
+
+```
+Example of intermediate board:
+intermediate_board([
+    [X,X,O,X,X],
+    [X,X,X,O,X,X,X,X],
+    [X,X,X,X,P,X,X,X,X],
+    [X,X,X,X,P,X,X,X,X,X],
+    [X,X,X,X,X,O,X,X,X,X,X],
+    [X,X,X,X,X,O,X,X,X,X,X,X],
+    [X,X,X,X,X,O,X,X,X,X,X],
+    [X,X,X,X,G,X,X,X,X,X,X,X],
+    [X,X,X,X,X,G,X,X,X,X,X],
+    [X,X,X,X,O,G,X,X,X,X],
+    [X,X,X,X,G,O,X,X,X],
+    [X,X,X,X,O,X,X,X],
+    [X,X,O,X,X]
+]).
+```
+
+<br>
+
+```
+Example of final board:
+final_board([
+    [X,X,O,X,X],
+    [X,X,X,O,X,X,X,X],
+    [X,X,X,X,P,O,X,X,X],
+    [X,X,X,X,P,O,X,X,X,X],
+    [X,X,X,X,X,O,X,X,X,X,X],
+    [X,X,X,X,X,O,X,X,X,X,X,X],
+    [X,X,X,X,P,O,X,X,X,X,X],
+    [X,X,X,P,G,X,X,X,X,X,X,X],
+    [X,X,X,X,P,G,X,X,X,X,X],
+    [X,X,X,X,O,G,X,X,X,X],
+    [X,X,X,X,G,O,X,X,X],
+    [X,X,X,X,O,X,X,X],
+    [X,X,O,X,X]
+]).
+```
 
 -----
 ## Visualizing the game
@@ -136,7 +148,18 @@ The predicate of the game state visualization was implemented by calling the pre
 Then the predicate **random_select** selects a random player to start and returns the variable 'Player',
 the predicate **display_game** is then called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
 Here's an example of the game state visualization:
-*Board of Alliances*
+<br>
+*Emply Board of Alliances*
 <br>
 ![Board](./images/board.png)
+
+<br>
+*Intermediate Board of Alliances*
+<br>
+![Board](./images/intermediate_board.png)
+
+<br>
+*Final Board of Alliances*
+<br>
+![Board](./images/final_board.png)
 
