@@ -1,13 +1,14 @@
+Notas a melhorar na 1ª entrega:
   ___
  /   \
 |  X  | 
  \___/ 
 
 
-realtorio: adicionar dimensao do tabuleiro ( hexagno com base 7 onde os extremos não são incluidos ).
-	   adicionar foto do tabuleiro de jogo
-	   tentar adicionar foto do tabuleiro intermedio
-	   adicionar foto do tabuleiro final de jogo
+relatorio: adicionar dimensao do tabuleiro ( hexagno com base 7 onde os extremos não são incluidos ). 	done 
+	   adicionar foto do tabuleiro de jogo								done
+	   tentar adicionar foto do tabuleiro intermedio	print do sictus
+	   adicionar foto do tabuleiro final de jogo		print do sistus				
 
 cordenadas dos pontos 
 
