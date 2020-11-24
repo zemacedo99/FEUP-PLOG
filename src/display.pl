@@ -93,9 +93,9 @@ display_game(Board, Player):-
 
 display_board(Board):-
     write('\n\n\n\n'),
-    write('         |OOOOOOOOOOOOOOO|       \n'),
+    write('        |OOOOOOOOOOO|       \n'),
     display_current_board_colors(Board, 0),
-    write('         |OOOOOOOOOOOOOOO|       \n'),
+    write('        |OOOOOOOOOOO|       \n'),
     write('______________________\n'),
     write('G - Green\n'),
     write('P - Purple\n'),
@@ -108,9 +108,9 @@ display_current_board_colors([], _ ):- !.
 /* Iterates over the board to get the row and displays it */
 display_current_board_colors([Row | OtherRows], RowIndex):-
     /*nth0(RowIndex, Board, Row),*/
-    display_board_structure1(RowIndex),
+    display_board_structure_left(RowIndex),
     display_color(Row, RowIndex),
-    display_board_structure2(RowIndex),
+    display_board_structure_right(RowIndex),
     NextRowIndex is RowIndex + 1,
     display_current_board_colors(OtherRows, NextRowIndex).
 
@@ -126,96 +126,96 @@ display_color([Color | RestRow], ColorIndex):-
 
 /* Write white space if that position in the board is unoccupied*/
 write_color('X'):-
-    write(' X ').
+    write('X ').
 
 /*Writes the Green symbol*/
 write_color('G'):-
-    write('G').
+    write('G ').
 
 /*Writes the Purple symbol*/
 write_color('P'):-
-    write('P').
+    write('P ').
 
 /*Writes the Orange symbol*/
 write_color('O'):-
-    write('O').
+    write('O ').
 
 
 /*Board structure fillers to make the board look like the real game - because the board is an hexagon and has a different structure depending on the row*/ 
-display_board_structure1(0):-
-    write('         |').
+display_board_structure_left(0):-
+    write('        | ').
 
-display_board_structure2(0):-
-    write('|       \n').
+display_board_structure_right(0):-
+    write('|\n').
 
-display_board_structure1(1):-
-    write('GGGG|').
+display_board_structure_left(1):-
+    write('GGGGG| ').
 
-display_board_structure2(1):-
+display_board_structure_right(1):-
+    write('|PPPPP\n').
+
+display_board_structure_left(2):-
+    write('GGGG| ').
+
+display_board_structure_right(2):-
     write('|PPPP\n').
 
-display_board_structure1(2):-
-    write('GGG|').
+display_board_structure_left(3):-
+    write('GGG| ').
 
-display_board_structure2(2):-
+display_board_structure_right(3):-
     write('|PPP\n').
 
-display_board_structure1(3):-
-    write('GG|').
+display_board_structure_left(4):-
+    write('GG| ').
 
-display_board_structure2(3):-
+display_board_structure_right(4):-
     write('|PP\n').
 
-display_board_structure1(4):-
-    write('G|').
+display_board_structure_left(5):-
+    write('G| ').
 
-display_board_structure2(4):-
+display_board_structure_right(5):-
     write('|P\n').
 
-display_board_structure1(5):-
-    write('|').
+display_board_structure_left(6):-
+    write('  | ').
 
-display_board_structure2(5):-
-    write('|\n').
+display_board_structure_right(6):-
+    write('|  \n').
 
-display_board_structure1(6):-
-    write(' |').
+display_board_structure_left(7):-
+    write('P| ').
 
-display_board_structure2(6):-
-    write('| \n').
-
-display_board_structure1(7):-
-    write('|').
-
-display_board_structure2(7):-
-    write('|\n').
-
-display_board_structure1(8):-
-    write('P|').
-
-display_board_structure2(8):-
+display_board_structure_right(7):-
     write('|G\n').
 
-display_board_structure1(9):-
-    write('PP|').
+display_board_structure_left(8):-
+    write('PP| ').
 
-display_board_structure2(9):-
+display_board_structure_right(8):-
     write('|GG\n').
 
-display_board_structure1(10):-
-    write('PPP|').
+display_board_structure_left(9):-
+    write('PPP| ').
 
-display_board_structure2(10):-
+display_board_structure_right(9):-
     write('|GGG\n').
 
-display_board_structure1(11):-
-    write('PPPP|').
+display_board_structure_left(10):-
+    write('PPPP| ').
 
-display_board_structure2(11):-
+display_board_structure_right(10):-
     write('|GGGG\n').
 
-display_board_structure1(12):-
-    write('         |').
+display_board_structure_left(11):-
+    write('PPPPP| ').
 
-display_board_structure2(12):-
+display_board_structure_right(11):-
+    write('|GGGGG\n').
+
+display_board_structure_left(12):-
+    write('        | ').
+
+display_board_structure_right(12):-
     write('|       \n').
