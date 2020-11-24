@@ -23,3 +23,25 @@
 * To connect green - Green & Purple
 */
 
+
+/* map the board with coordinates */
+
+valid_moves(+GameState, +Player, -ListOfMoves).
+/* to obtain a list of possible moves */
+
+move(+GameState, +Move,-NewGameState).
+/* validation and execution of a move, obtaining the new game state */
+
+game_over(+GameState, -Winner).
+/* check if the game is over and identify the winner */
+
+value(+GameState, +Player, -Value).
+/* Formas de avaliação do estado do jogo
+ não sei a utilidade disto :s 
+ */
+
+choose_move(+GameState, +Player, +Level, -Move).
+/*
+move choice to be made by the computer,
+depending on the difficulty level
+*/
