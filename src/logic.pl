@@ -26,11 +26,11 @@
 
 /* map the board with coordinates */
 
-getRow(1, [H|_], Row).
+getRow(1, [Row|_], Row).
 getRow(RowIndex, [_|T], Row):-
     getRow(RowIndex2, T, Row), RowIndex is RowIndex2 + 1.
 
-getSpace(1, [H|_], Space).
+getSpace(1, [Space|_], Space).
 getSpace(SpaceIndex, [_|T], Space):-
     getRow(SpaceIndex2, T, Space), SpaceIndex is SpaceIndex2 + 1.
 
@@ -55,24 +55,27 @@ valid_move(RowIndex, SpaceIndex, Board, Space, Player):-
 
 
 replace_space([],_,_,_,_).
-replace_space([Space|Rest], [NewSpace|NewRest], SpaceIndex, CurrrentSpaceIndex, Color):-
-    SpaceIndex /= CurrrentSpaceIndex,
-    nth1(CurrrentSpaceIndex, NewSpace, Space, NewRest),
-    replace_space(Rest, NewRest, SpaceIndex, CurrrentSpaceIndex2, Color),
-    CurrrentSpaceIndex is CurrrentSpaceIndex2 + 1.
+replace_space([Space|Rest], [NewSpace|NewRest], SpaceIndex, CurrentSpaceIndex, Color):-
+    SpaceIndex \= CurrentSpaceIndex,
+    nth1(CurrentSpaceIndex, NewSpace, Space, NewRest),
+    CurrentSpaceIndex2 is CurrentSpaceIndex +1,
+    replace_space(Rest, NewRest, SpaceIndex, CurrentSpaceIndex2, Color).
+    /*CurrentSpaceIndex is CurrentSpaceIndex2 + 1.*/
 
-replace_space([Space|Rest], [NewSpace|NewRest], SpaceIndex, CurrrentSpaceIndex, Color):-
-    SpaceIndex == CurrrentSpaceIndex,
-    nth1(CurrrentSpaceIndex, NewSpace, Color, NewRest),
-    replace_space(Rest, NewRest, SpaceIndex, CurrrentSpaceIndex2, Color),
-    CurrrentSpaceIndex is CurrrentSpaceIndex2 + 1.
+replace_space([Space|Rest], [NewSpace|NewRest], SpaceIndex, CurrentSpaceIndex, Color):-
+    SpaceIndex == CurrentSpaceIndex,
+    nth1(CurrentSpaceIndex, NewSpace, Color, NewRest),
+    CurrentSpaceIndex2 is CurrentSpaceIndex + 1,
+    replace_space(Rest, NewRest, SpaceIndex, CurrentSpaceIndex2, Color).
+    /*CurrentSpaceIndex is CurrentSpaceIndex2 + 1.*/
 
 
 replace_row([], _ , _, _, _).
 replace_row([Row|Rest], [NewRow|NewRest], SpaceIndex, CurrentRowIndex, Color):-
     replace_space(Row, NewRow, SpaceIndex, 1, Color),
-    replace_row(Rest,NewRest, SpaceIndex, CurrentRowIndex2, Color),
-    CurrentRowIndex is CurrentRowIndex2 + 1.
+    CurrentRowIndex2 is CurrentRowIndex +1,
+    replace_row(Rest,NewRest, SpaceIndex, CurrentRowIndex2, Color).
+    /*CurrentRowIndex is CurrentRowIndex2 + 1.*/
 
 
 move(RowIndex, SpaceIndex, Color, Board, NewBoard):-
@@ -87,13 +90,13 @@ check_for_win(Board, Player):-
     
 
 /*Takes the Player and switches to the other one*/
-switch_player(Player):-
-    Player == 1,
-    Player is 2.
+switch_player(1, 2).
+switch_player(2, 1).
 
-switch_player(Player):-
-    Player == 2,
-    Player is 1.
+
+next_player(Player, NewPlayer):-
+    switch_player(Player, NewPlayer),
+    write(Player), write(NewPlayer).
 
 
 /*____________________________________________________*/

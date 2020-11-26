@@ -87,16 +87,15 @@ display_game(Board, Player):-
     display_board(Board),
     write('Row in which you want to play: \n'),
     read(RowIndex),
-    write(RowIndex),
     write('Position inside the row in which you want to play: \n' ),
     read(SpaceIndex),
     write('Choose a color option (G, P, O): \n'),
     read(Color),
-    % valid_move(RowIndex, SpaceIndex, Board, Space, Player),
+    valid_move(RowIndex, SpaceIndex, Board, Space, Player),
     move(RowIndex, SpaceIndex, Color, Board, NewBoard),
     % check_for_win(Board, Player),
-    switch_player(Player),
-    display_game(NewBoard, Player).
+    next_player(Player, NewPlayer),
+    display_game(NewBoard, NewPlayer).
 
 
 display_board(Board):-
