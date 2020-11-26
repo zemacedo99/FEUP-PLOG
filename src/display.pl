@@ -33,19 +33,19 @@ display_not_yet_implemented:-
 * Size of rows, from the top down: 5, 8, 9, 10, 11, 12, 11, 12, 11, 10, 9, 8, 5
 */
 initial([
-    [X,X,X,X,X],
-    [X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X],
-    [X,X,X,X,X]
+    ['X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X']
 ]).
 
 /*Example of intermediate board*/
@@ -85,10 +85,18 @@ final_board([
 
 display_game(Board, Player):-
     display_board(Board),
-    write('Choose an option (G, P, O): ').
-    /* need to read chosen option, update board,
-    *  switch player and loop to display_game with updated Board and updated Player :)
-    */
+    write('Row in which you want to play: \n'),
+    read(RowIndex),
+    write(RowIndex),
+    write('Position inside the row in which you want to play: \n' ),
+    read(SpaceIndex),
+    write('Choose a color option (G, P, O): \n'),
+    read(Color),
+    % valid_move(RowIndex, SpaceIndex, Board, Space, Player),
+    move(RowIndex, SpaceIndex, Color, Board, NewBoard),
+    % check_for_win(Board, Player),
+    switch_player(Player),
+    display_game(NewBoard, Player).
 
 
 display_board(Board):-
@@ -124,21 +132,25 @@ display_color([Color | RestRow], ColorIndex):-
     NextColorIndex is ColorIndex + 1,
     display_color(RestRow, NextColorIndex).
 
+
+write_color(Color):-
+    write(Color), write(' ').
+
 /* Write white space if that position in the board is unoccupied*/
-write_color('X'):-
-    write('X ').
+% write_color('X'):-
+%    write('X '). 
 
 /*Writes the Green symbol*/
-write_color('G'):-
-    write('G ').
+% write_color('G'):-
+%     write('G ').
 
 /*Writes the Purple symbol*/
-write_color('P'):-
-    write('P ').
+% write_color('P'):-
+%     write('P ').
 
 /*Writes the Orange symbol*/
-write_color('O'):-
-    write('O ').
+% write_color('O'):-
+%     write('O ').
 
 
 /*Board structure fillers to make the board look like the real game - because the board is an hexagon and has a different structure depending on the row*/ 
