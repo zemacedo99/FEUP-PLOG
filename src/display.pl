@@ -94,8 +94,12 @@ display_game(Board, Player):-
     valid_move(RowIndex, SpaceIndex, Board, Space, Player),
     move(RowIndex, SpaceIndex, Color, Board, NewBoard),
     % check_for_win(Board, Player),
-    next_player(Player, NewPlayer),
-    display_game(NewBoard, NewPlayer).
+    %write('\nCurrent Player: '),
+    %write(Player),
+    %next_player(Player, NewPlayer),
+    %write('\nNew Player: '),
+    %write(NewPlayer),
+    display_game(NewBoard, Player).
 
 
 display_board(Board):-

@@ -54,35 +54,27 @@ valid_move(RowIndex, SpaceIndex, Board, Space, Player):-
     display_game(Board, Player).
 
 
-replace_space([],_,_,_,_).
-replace_space([Space|Rest], [NewSpace|NewRest], SpaceIndex, CurrentSpaceIndex, Color):-
-    SpaceIndex \= CurrentSpaceIndex,
-    nth1(CurrentSpaceIndex, NewSpace, Space, NewRest),
-    CurrentSpaceIndex2 is CurrentSpaceIndex +1,
-    replace_space(Rest, NewRest, SpaceIndex, CurrentSpaceIndex2, Color).
-    /*CurrentSpaceIndex is CurrentSpaceIndex2 + 1.*/
+replace_row(1, SpaceIndex, Color, [Row | Rest], [New_row | Rest]):-
+    replace_space(SpaceIndex, Color, Row, New_row).
 
-replace_space([Space|Rest], [NewSpace|NewRest], SpaceIndex, CurrentSpaceIndex, Color):-
-    SpaceIndex == CurrentSpaceIndex,
-    nth1(CurrentSpaceIndex, NewSpace, Color, NewRest),
-    CurrentSpaceIndex2 is CurrentSpaceIndex + 1,
-    replace_space(Rest, NewRest, SpaceIndex, CurrentSpaceIndex2, Color).
-    /*CurrentSpaceIndex is CurrentSpaceIndex2 + 1.*/
+replace_row(N, SpaceIndex, Color, [Row | Rest], [Row | New_rest]):-
+    N > 1,
+    Next is N - 1,
+    replace_row(Next, SpaceIndex, Color , Rest, New_rest).
 
+replace_space(1, Color, [_ | Rest], [Color | Rest]).
 
-replace_row([], _ , _, _, _).
-replace_row([Row|Rest], [NewRow|NewRest], SpaceIndex, CurrentRowIndex, Color):-
-    replace_space(Row, NewRow, SpaceIndex, 1, Color),
-    CurrentRowIndex2 is CurrentRowIndex +1,
-    replace_row(Rest,NewRest, SpaceIndex, CurrentRowIndex2, Color).
-    /*CurrentRowIndex is CurrentRowIndex2 + 1.*/
+replace_space(N, Color, [X | Rest], [X | New_rest]):-
+    N > 1,
+    Next is N - 1,
+    replace_space(Next, Color , Rest, New_rest).
 
 
 move(RowIndex, SpaceIndex, Color, Board, NewBoard):-
     /*updates board*/
-    replace_row(Board, NewBoard, RowIndex, 1, Color).
-
+    replace_row(RowIndex, SpaceIndex, Color, Board, NewBoard).
     
+
 
 
 check_for_win(Board, Player):-
@@ -90,13 +82,15 @@ check_for_win(Board, Player):-
     
 
 /*Takes the Player and switches to the other one*/
-switch_player(1, 2).
-switch_player(2, 1).
+switch_player(1, NewPlayer):-
+    NewPlayer == 2.
+    
+switch_player(2, NewPlayer):-
+    NewPlayer == 1.
 
 
 next_player(Player, NewPlayer):-
-    switch_player(Player, NewPlayer),
-    write(Player), write(NewPlayer).
+    switch_player(Player, NewPlayer).
 
 
 /*____________________________________________________*/
