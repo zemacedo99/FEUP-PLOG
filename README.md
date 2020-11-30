@@ -8,6 +8,12 @@
 | José António Dantas Macedo                | 201705226 | up201705226@fe.up.pt |
 
 ---
+## Installation and Execution
+  Put all files with extension '.pl' in the same folder
+  Start Sicstus Prolog (or another Prolog development environment compatible with Sicstus and the ISO standard)
+  Consult / import the file 'alliances.pl' *<consult (' path / to / file / alliances.pl ')>*
+  Call the play/0 function by typing the command 'play.'
+  Follow the game instructions
 
 ## Game Description
 Alliances, a 2-player game by Markus Hagenauer.
@@ -60,6 +66,11 @@ https://boardgamegeek.com/boardgame/302399/alliances;
 https://www.youtube.com/watch?v=VNyHiCfOWhw&feature=emb_logo.
 
 ----
+
+# Game Logic:
+Program starts by calling the predicate **play/0**, in which the initial menu is displayed calling **display_main_menu/0**.
+According to the selected game mode, the predicate that will fill the state of the game will be called (**display_game/2** or **display_game_computer/2** or **display_game_computer_PC_only/2**) .
+
 ## Internal representation of the state of the game
 <br>
 
@@ -141,14 +152,17 @@ final_board([
     [X,X,O,X,X]
 ]).
 ```
-
 -----
+
+
+
 ## Visualizing the game
 The predicate of the game state visualization was implemented by calling the predicate **initial** that returns the variable 'Board' with the initial game state (empty board).<br>
 Then the predicate **random_select** selects a random player to start and returns the variable 'Player',
 the predicate **display_game** is then called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
 Here's an example of the game state visualization:
 <br>
+
 *Emply Board of Alliances*
 <br>
 ![Board](./images/board.png)
@@ -162,4 +176,25 @@ Here's an example of the game state visualization:
 *Final Board of Alliances*
 <br>
 ![Board](./images/final_board.png)
+
+## List of valid plays
+After showing the board game, the player can choose a position to play a certain piece, and the predicate **valid_move/6** will check if is valid to place the piece on that position. If it can place the piece there, the predicate **move/5** will be called and will put the chosen piece on the chosen position.
+
+## Computer Play
+After calling the predicate **display_game_computer_PC_only/2** or **display_game_computer/2**,
+auxiliary functions are used to determine where the pc will play and the predicate **valid_move/6** will validade that move or not.
+
+### Conclusions
+In this project we implement the board game Alliances was developed in Prolog language using the development system Sicstus.
+It's playable by Human vs Human, PC vs PC and Human vs PC.
+The game was quite complex, and due to lack of time and other reasons, the validation of win condition is not fully complete in this delivery.
+
+### Bibliography
+
+[More information about the game Alliances](https://nestorgames.com/rulebooks/ALLIANCES_EN.pdf)
+
+[Buy the board game Alliances](https://boardgamegeek.com/boardgame/302399/alliances)
+
+[Prolog Manual](https://www.swi-prolog.org/pldoc/doc_for?object=manual)
+
 
