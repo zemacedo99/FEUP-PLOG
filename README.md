@@ -161,21 +161,20 @@ The predicate of the game state visualization was implemented by calling the pre
 Then the predicate **random_select** selects a random player to start and returns the variable 'Player',
 the predicate **display_game** is then called with the variables 'Board' and 'Player' and calls the predicate **display_board** that calls several predicates that will write the game state. <br>
 Here's an example of the game state visualization:
-<br>
 
-*Emply Board of Alliances*
-<br>
+*Emply Board of Alliances:* <br>
+
 ![Board](./images/board.png)
 
-<br>
-*Intermediate Board of Alliances*
-<br>
-![Board](./images/intermediate_board.png)
 
-<br>
-*Final Board of Alliances*
-<br>
-![Board](./images/final_board.png)
+*Intermediate Board of Alliances:* <br> 
+
+![Intermediate Board](./images/intermediate_board.png)
+
+
+*Final Board of Alliances:* <br>
+
+![Final Board](./images/final_board.png)
 
 ## List of valid plays
 After showing the board game, the player can choose a position to play a certain piece, and the predicate **valid_move/6** will check if is valid to place the piece on that position. If it can place the piece there, the predicate **move/5** will be called and will put the chosen piece on the chosen position.
