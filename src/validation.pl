@@ -21,31 +21,69 @@ validate_column(Row,SpaceIndex):-
 
 
 valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
-    Mode == 'HumanOnly',
+    Mode == 1,
     getRow(RowIndex, Board, Row),
     getSpace(SpaceIndex, Row, Space),
     Space == 'X'.
 
 valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
-    Mode == 'HumanOnly',
+    Mode == 1,
     getRow(RowIndex, Board, Row),
     getSpace(SpaceIndex, Row, Space),
-    Space /= 'X',
-    write('\nInvalid move\n'),
+    Space == 'O',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
     display_game(Board, Player).
 
 valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
-    Mode == 'HumanPC',
+    Mode == 1,
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+    Space == 'P',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
+    display_game(Board, Player).
+
+valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
+    Mode == 1,
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+    Space == 'G',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
+    display_game(Board, Player).
+
+valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
+    Mode == 2,
     getRow(RowIndex, Board, Row),
     getSpace(SpaceIndex, Row, Space),
     Space == 'X'.
 
 valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
-    Mode == 'HumanPC',
+    Mode == 2,
     getRow(RowIndex, Board, Row),
     getSpace(SpaceIndex, Row, Space),
-    Space /= 'X',
-    write('\nInvalid move\n'),
+    Space == 'O',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
+    display_game_computer(Board, Player).
+
+valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
+    Mode == 2,
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+    Space == 'P',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
+    display_game_computer(Board, Player).
+
+valid_move(RowIndex, SpaceIndex, Board, Space, Player, Mode):-
+    Mode == 2,
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+    Space == 'G',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
     display_game_computer(Board, Player).
 
 valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'PConly'):-
@@ -56,7 +94,24 @@ valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'PConly'):-
 valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'PConly'):-
     getRow(RowIndex, Board, Row),
     getSpace(SpaceIndex, Row, Space),
-    Space /= 'X',
-    write('\nInvalid move\n'),
+    Space == 'O',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
+    display_game_computer_PC_only(Board, Player).
+
+valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'PConly'):-
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+    Space == 'P',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
+    display_game_computer_PC_only(Board, Player).
+
+valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'PConly'):-
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+    Space == 'G',
+    write('\n\nINVALID MOVE\n'),
+    write('\nPlease try again, choose an empty position (X)\n'),
     display_game_computer_PC_only(Board, Player).
 

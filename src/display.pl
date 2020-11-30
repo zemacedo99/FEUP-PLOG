@@ -108,7 +108,7 @@ display_game_computer(Board,Player):-
     write('Choose a color option (G, P, O): \n'),
     read(Color),
     
-    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'HumanPC'),
+    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 2),
     move(RowIndex, SpaceIndex, Color, Board, NewBoard),
     display_game_computer(NewBoard,'PC').
 
@@ -120,7 +120,7 @@ display_game_computer(Board,Player):-
     display_board(Board),
     random(1,13,RowIndex),
     generate_spaceIndex(RowIndex, SpaceIndex),
-    valid_move(RowIndex,SpaceIndex,Board,Space,Player,'HumanPC'),
+    valid_move(RowIndex,SpaceIndex,Board,Space,Player,2),
     generate_color(Color),
     move(RowIndex, SpaceIndex, Color, Board, NewBoard),
     write('\n\nPC HAS PLAYED'),
@@ -132,6 +132,7 @@ display_game_computer(Board,Player):-
 
 
 display_game(Board, Player):-
+    Player == 1,
     write('\n\nTURN OF PLAYER: '),
     write(Player),
     display_board(Board),
@@ -141,16 +142,26 @@ display_game(Board, Player):-
     read(SpaceIndex),
     write('Choose a color option (G, P, O): \n'),
     read(Color),
-    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'HumanOnly'),
+    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 1),
     move(RowIndex, SpaceIndex, Color, Board, NewBoard),
-    %trace,
     %check_for_win(NewBoard, Player),
-    %write('\nCurrent Player: '),
-    %write(Player),
-    %next_player(Player, NewPlayer),
-    %write('\nNew Player: '),
-    %write(NewPlayer),
-    display_game(NewBoard, Player).
+    display_game(NewBoard, 2).
+
+display_game(Board, Player):-
+    Player == 2,
+    write('\n\nTURN OF PLAYER: '),
+    write(Player),
+    display_board(Board),
+    write('Row in which you want to play: \n'),
+    read(RowIndex),
+    write('Position inside the row in which you want to play: \n' ),
+    read(SpaceIndex),
+    write('Choose a color option (G, P, O): \n'),
+    read(Color),
+    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 1),
+    move(RowIndex, SpaceIndex, Color, Board, NewBoard),
+    %check_for_win(NewBoard, Player),
+    display_game(NewBoard, 1).
 
 
 display_board(Board):-

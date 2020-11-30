@@ -191,11 +191,11 @@ validate_path(13, SpaceIndex,ListOfColors):-
 
 
 /*Takes the Player and switches to the other one*/
-next_player(1, NewPlayer):-
+/*next_player(1, NewPlayer):-
     NewPlayer = 2.
 
 next_player(2, NewPlayer):-
-    NewPlayer = 1.
+    NewPlayer = 1.*/
 
 
 
