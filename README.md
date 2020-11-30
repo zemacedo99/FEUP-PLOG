@@ -95,19 +95,19 @@ Exemple of representation of game states:
 ```
 Example of initial board:
 initial([
-    [X,X,X,X,X],
-    [X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X,X],
-    [X,X,X,X,X,X,X,X],
-    [X,X,X,X,X]
+    ['X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X']
 ]).
 ```
 
@@ -116,19 +116,19 @@ initial([
 ```
 Example of intermediate board:
 intermediate_board([
-    [X,X,O,X,X],
-    [X,X,X,O,X,X,X,X],
-    [X,X,X,X,P,X,X,X,X],
-    [X,X,X,X,P,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X],
-    [X,X,X,X,G,X,X,X,X,X,X,X],
-    [X,X,X,X,X,G,X,X,X,X,X],
-    [X,X,X,X,O,G,X,X,X,X],
-    [X,X,X,X,G,O,X,X,X],
-    [X,X,X,X,O,X,X,X],
-    [X,X,O,X,X]
+    ['X','X','X','O','X'],
+    ['X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X'],
+    ['O','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','G','X','X','X','P','X'],
+    ['X','X','X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','P','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X','X','X','X'],
+    ['X','X','X','X','X']
 ]).
 ```
 
@@ -137,19 +137,19 @@ intermediate_board([
 ```
 Example of final board:
 final_board([
-    [X,X,O,X,X],
-    [X,X,X,O,X,X,X,X],
-    [X,X,X,X,P,O,X,X,X],
-    [X,X,X,X,P,O,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X],
-    [X,X,X,X,X,O,X,X,X,X,X,X],
-    [X,X,X,X,P,O,X,X,X,X,X],
-    [X,X,X,P,G,X,X,X,X,X,X,X],
-    [X,X,X,X,P,G,X,X,X,X,X],
-    [X,X,X,X,O,G,X,X,X,X],
-    [X,X,X,X,G,O,X,X,X],
-    [X,X,X,X,O,X,X,X],
-    [X,X,O,X,X]
+    ['X','X','O','X','X'],
+    ['X','X','X','O','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X','X'],
+    ['X','X','O','X','X','X','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X','X','X','X'],
+    ['X','X','X','X','O','X','X','X','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X','X','X','X'],
+    ['X','X','X','X','O','X','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X','X'],
+    ['X','X','X','O','X','X','X','X'],
+    ['X','X','O','X','X']
 ]).
 ```
 -----
