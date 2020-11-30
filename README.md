@@ -9,11 +9,11 @@
 
 ---
 ## Installation and Execution
-  Put all files with extension '.pl' in the same folder
-  Start Sicstus Prolog (or another Prolog development environment compatible with Sicstus and the ISO standard)
-  Consult / import the file 'alliances.pl' *<consult (' path / to / file / alliances.pl ')>*
-  Call the play/0 function by typing the command 'play.'
-  Follow the game instructions
+  Put all files with extension '.pl' in the same folder <br>
+  Start Sicstus Prolog (or another Prolog development environment compatible with Sicstus and the ISO standard)  <br>
+  Consult / import the file 'alliances.pl' *<consult (' path / to / file / alliances.pl ')>*  <br>
+  Call the play/0 function by typing the command 'play.'  <br>
+  Follow the game instructions  <br>
 
 ## Game Description
 Alliances, a 2-player game by Markus Hagenauer.
