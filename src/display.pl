@@ -82,8 +82,24 @@ final_board([
     [X,X,O,X,X]
 ]).
 
+display_game_computer_PC_only(Board, Player):-
+    write('\n\nTURN OF PLAYER: '),
+    write(Player),
+    display_board(Board),
+    random(1,13,RowIndex),
+    generate_spaceIndex(RowIndex, SpaceIndex),
+    valid_move(RowIndex,SpaceIndex,Board,Space,Player,'PConly'),
+    generate_color(Color),
+    move(RowIndex, SpaceIndex, Color, Board, NewBoard),
+    write('\n\nPC HAS PLAYED'),
+    write('\nPlease press any key followed by a dot to continue: \n'),
+    read(Continue),
+    display_game_computer_PC_only(NewBoard,'PC').
 
-display_game(Board, Player):-
+display_game_computer(Board,Player):-
+    Player == 1,
+    write('\n\nTURN OF PLAYER: '),
+    write(Player),
     display_board(Board),
     write('Row in which you want to play: \n'),
     read(RowIndex),
@@ -91,9 +107,44 @@ display_game(Board, Player):-
     read(SpaceIndex),
     write('Choose a color option (G, P, O): \n'),
     read(Color),
-    valid_move(RowIndex, SpaceIndex, Board, Space, Player),
+    
+    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'HumanPC'),
     move(RowIndex, SpaceIndex, Color, Board, NewBoard),
-    % check_for_win(Board, Player),
+    display_game_computer(NewBoard,'PC').
+
+
+display_game_computer(Board,Player):-
+    Player == 'PC',
+    write('\n\nTURN OF PLAYER: '),
+    write(Player),
+    display_board(Board),
+    random(1,13,RowIndex),
+    generate_spaceIndex(RowIndex, SpaceIndex),
+    valid_move(RowIndex,SpaceIndex,Board,Space,Player,'HumanPC'),
+    generate_color(Color),
+    move(RowIndex, SpaceIndex, Color, Board, NewBoard),
+    write('\n\nPC HAS PLAYED'),
+    write('\nPlease press any key followed by a dot to continue: \n'),
+    read(Continue),
+    display_game_computer(NewBoard,1).
+    
+
+
+
+display_game(Board, Player):-
+    write('\n\nTURN OF PLAYER: '),
+    write(Player),
+    display_board(Board),
+    write('Row in which you want to play: \n'),
+    read(RowIndex),
+    write('Position inside the row in which you want to play: \n' ),
+    read(SpaceIndex),
+    write('Choose a color option (G, P, O): \n'),
+    read(Color),
+    valid_move(RowIndex, SpaceIndex, Board, Space, Player, 'HumanOnly'),
+    move(RowIndex, SpaceIndex, Color, Board, NewBoard),
+    %trace,
+    %check_for_win(NewBoard, Player),
     %write('\nCurrent Player: '),
     %write(Player),
     %next_player(Player, NewPlayer),
@@ -103,7 +154,7 @@ display_game(Board, Player):-
 
 
 display_board(Board):-
-    write('\n\n\n\n'),
+    write('\n\n\n'),
     write('        |OOOOOOOOOOO|       \n'),
     display_current_board_colors(Board, 0),
     write('        |OOOOOOOOOOO|       \n'),

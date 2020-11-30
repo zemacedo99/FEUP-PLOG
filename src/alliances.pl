@@ -7,6 +7,8 @@
 
 :- consult('display.pl').
 :- consult('logic.pl').
+:- consult('computer.pl').
+:- consult('validation.pl').
 :- use_module(library(system)).
 :- use_module(library(lists)).
 :- use_module(library(random)).
@@ -48,17 +50,13 @@ option_is_valid(1):-
 
 /* Human vs. PC option*/
 option_is_valid(2):-
-    display_not_yet_implemented,
-    read(Option),
-    /*valid_option(Option).*/
-    option_is_valid(Option).
+    initial(Board),
+    display_game_computer(Board, 1).
 
 /* PC vs. PC option*/
 option_is_valid(3):-
-    display_not_yet_implemented,
-    read(Option),
-    /*valid_option(Option).*/
-    option_is_valid(Option).
+    initial(Board),
+    display_game_computer_PC_only(Board, 'PC').
 
 /* Exit option */
 option_is_valid(4):-

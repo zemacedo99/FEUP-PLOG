@@ -32,7 +32,7 @@ getRow(RowIndex, [_|T], Row):-
 
 getSpace(1, [Space|_], Space).
 getSpace(SpaceIndex, [_|T], Space):-
-    getRow(SpaceIndex2, T, Space), SpaceIndex is SpaceIndex2 + 1.
+    getSpace(SpaceIndex2, T, Space), SpaceIndex is SpaceIndex2 + 1.
 
 /* replace(+Elem, +NewElem, +List, -NewList) */
 /*replace(_,_,[],[]) :- !.
@@ -41,17 +41,7 @@ getSpace(SpaceIndex, [_|T], Space):-
 */replace(Elem,NewElem,[X|List],[X|New]) :- replace(Elem,NewElem,List,New).
 
 /*check if the row and space is an X - empty space*/
-valid_move(RowIndex, SpaceIndex, Board, Space, Player):-
-    getRow(RowIndex, Board, Row),
-    getSpace(SpaceIndex, Row, Space),
-    Space == 'X'.
 
-valid_move(RowIndex, SpaceIndex, Board, Space, Player):-
-    getRow(RowIndex, Board, Row),
-    getSpace(SpaceIndex, Row, Space),
-    Space /= 'X',
-    write('Invalid move'),
-    display_game(Board, Player).
 
 
 replace_row(1, SpaceIndex, Color, [Row | Rest], [New_row | Rest]):-
@@ -73,73 +63,147 @@ replace_space(N, Color, [X | Rest], [X | New_rest]):-
 move(RowIndex, SpaceIndex, Color, Board, NewBoard):-
     /*updates board*/
     replace_row(RowIndex, SpaceIndex, Color, Board, NewBoard).
-    /*podemos  é aqui que vamos chamar aqui o check_for_win*/
-    /* acho que o move talvez possa de receber um player tb para sabermos de quem foi a jogada e mandar ao check for win*/
-
-
 
 check_for_win(Board, Player):-
-    check_orange_win(Board,Player). % verificação da ligação laranja-laranja
+    check_orange_win(Board,Player,1, []). 
     /*checks if there is a connection, if so, call game_over to identify winner and display game over menu*/
     
-check_orange_win(Board,Player):-
-    check_row(0,Board,ListOfColors),   % verifica a primeira linha
-    check_normal_row(1,Board,ListOfColors),      % verificação das linhas normais
-    check_row(12,Board,ListOfColors),   % verifica a ultima linha
-    check_complete_path(ListOfColors).  % verificação de casos expeciais 
+check_orange_win(Board,Player,RowIndex, ListOfColors):-
+    RowIndex < 14,
+    check_row(RowIndex,Board),
+    fill_path(RowIndex, 1, Board, ListOfColors),
+    write(ListOfColors),
+    /*validate_path(RowIndex, ListOfColors),*/
+
+    
+    RowIndex2 is RowIndex +1,
+    check_orange_win(Board, Player, RowIndex2, ListOfColors).
+
+
+/*check if the row has the color, in this case orange*/
+check_row(RowIndex, Board):-
+    getRow(RowIndex, Board, Row),
+    member('O', Row).
     
 
-/*check if the row have the color, in the case orange*/
-check_row(RowIndex,Board,ListOfColors):-        % ListOfColors -> [RowIndex-SpaceIndex,RowIndex-SpaceIndex,etc]
-    getRow(RowIndex,Board,Row).
-    /* se a Row nao tiver a cor de laranja nao é um caso de vitória e deve terminar*/
-    /* se tiver, guardar a posição (rowIndex e spaceIndex ) onde esta(o) a(s) peça(s) cor de laranja numa lista ListOfColors*/
-    /* */
 
-check_normal_row(NormalRowIndex,Board,ListOfColors):-
-    check_row(NormalRowIndex,Board,NewListOfColors),
-    /* se na ListOfColors nao tiver cores na Row anterior nao é um caso de vitória e deve terminar*/
-    /* se tiver,
-        compara a NewListOfColor com a ListOfColors recebida e ve se as a SpaceIndex da ListaOfColors == SpaceIndex da NewListOfColors e ListaOfColors ==  SpaceIndex-1 da NewListOfColors
-        se true faz apend da NewListOfColors com a listofcolors se nao termina
+fill_path(RowIndex, SpaceIndex, Board, ListOfColors):-
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+
+    Space == 'O',
+
+    validate_path(RowIndex,SpaceIndex,ListOfColors),
+    ColorInfo == [RowIndex,SpaceIndex],
+    append(ColorInfo, ListOfColors, ListOfColors2),
+
+    length(Row,SizeOfRow),
+    SpaceIndex <= SizeOfRow,
+    SpaceIndex2 is SpaceIndex +1,
+    fill_path(RowIndex, SpaceIndex2, Board, ListOfColors2).
+
+fill_path(RowIndex, SpaceIndex, Board, ListOfColors):-
+    getRow(RowIndex, Board, Row),
+    getSpace(SpaceIndex, Row, Space),
+
+    Space /= 'O',
+    
+    length(Row,SizeOfRow),
+    SpaceIndex <= SizeOfRow,
+    SpaceIndex2 is SpaceIndex +1,
+    fill_path(RowIndex, SpaceIndex2, Board, ListOfColors).
+
+
+validate_path(1,ListOfColors).
+    
+validate_path(2, ListOfColors):-
+
+get_space_onList(_,_,[]).
+
+get_space_onList(RowIndex, SpaceIndex,[H|Rest]):-
+    nth1(1,H,NewRowIndex),
+    NewRowIndex /= RowIndex,
+    get_space_onList(RowIndex,SpaceIndex,Rest).
+
+get_space_onList(RowIndex, SpaceIndex,[H|Rest]):-
+    nth1(1,H,NewRowIndex),
+    NewRowIndex == RowIndex,
+    nth1(2,H,NewSpaceIndex),
+    SpaceIndex is NewSpaceIndex,
+    ListThisRow.append(H),
+    get_space_onList(RowIndex,SpaceIndex,Rest).
+
+
+check_LastRowSpace36(SpaceIndex,LastSpaceIndex):-
+    check_LastRowSpaceIqual(SpaceIndex,LastSpaceIndex),
+    check_LastRowSpaceMinus1(SpaceIndex,LastSpaceIndex).
+
+check_LastRowSpaceIqual(SpaceIndex,LastSpaceIndex):-
+    SpaceIndex == LastSpaceIndex. 
+
+check_LastRowSpaceMinus1(SpaceIndex,LastSpaceIndex):-
+    SpaceIndex == LastSpaceIndex - 1.
+
+
+
+
+f36([]).
+f36(ListOfColors):-
+
+    get_space_onList(LastRowIndex, LastSpaceIndex,ListOfColors),
+
+    check_LastRowSpace36(SpaceIndex,LastSpaceIndex),
+    
+    f36(ListOfColors).
+
+
+validate_path(RowIndex,SpaceIndex,ListOfColors):-
+    /* Ex. of ListOfColors [[1,3],[1,4],[2,5],[2,6]] */
+    RowIndex >= 3,
+    RowIndex <= 6,
+    LastRowIndex is RowIndex - 1,
+
+    f36(ListOfColors),
+
+
+
+
+    /*
+    Obter na lista o RowIndex, ex 2 
+    ver o spaceIndex  associado,  ex 5 
+    verificar se a RowIndex-1 (ex 1) com o spaceIndex ou spaceIndex - 1 existe
+
     */
-    /*o caso do SpaceIndex == 0  ou SpaceIndex == NewListOfColors.length, ve de maneira difernte */
-    NormalRowIndex == 11, % terminar a recrusividade 
-    NextRowIndex is NormalRowIndex + 1, 
-    check_normal_row(NextRowIndex,Board,NewListOfColors).
+    
+
+validate_path(8, SpaceIndex,ListOfColors):-
+    
+validate_path(RowIndex, SpaceIndex,ListOfColors):-
+    RowIndex >= 7,
+    RowIndex /= 8,
+    RowIndex <= 12,
+
+validate_path(13, SpaceIndex,ListOfColors):-
+
+
+
+
 
 
 /*Takes the Player and switches to the other one*/
-switch_player(1, NewPlayer):-
-    NewPlayer == 2.
-    
-switch_player(2, NewPlayer):-
-    NewPlayer == 1.
+next_player(1, NewPlayer):-
+    NewPlayer = 2.
+
+next_player(2, NewPlayer):-
+    NewPlayer = 1.
 
 
-next_player(Player, NewPlayer):-
-    switch_player(Player, NewPlayer).
 
-
-/*____________________________________________________*/
-valid_moves(+GameState, +Player, -ListOfMoves).
-/* to obtain a list of possible moves */
-
-move(+GameState, +Move,-NewGameState).
-/* validation and execution of a move, obtaining the new game state */
+/*__________________________________________________________*/
 
 /* check if the game is over and identify the winner */
 game_over(+GameState, -Winner):-
     check_game_over(Board),
     display_board(Board).
 
-value(+GameState, +Player, -Value).
-/* Formas de avaliação do estado do jogo
- não sei a utilidade disto :s 
- */
 
-choose_move(+GameState, +Player, +Level, -Move).
-/*
-move choice to be made by the computer,
-depending on the difficulty level
-*/
