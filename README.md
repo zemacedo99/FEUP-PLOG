@@ -177,16 +177,17 @@ Here's an example of the game state visualization:
 ![Final Board](./images/final_board.png)
 
 ## List of valid plays
-After showing the board game, the player can choose a position to play a certain piece, and the predicate **valid_move/6** will check if is valid to place the piece on that position. If it can place the piece there, the predicate **move/5** will be called and will put the chosen piece on the chosen position.
+After displaying the board game, the player can choose a position to play a certain piece, by choosing in which row and row position he wants to play, and the predicate **valid_move/6** will check if its valid to place the piece on that position. If the chosen position isn't valid, there will be a message on screen informing the player that the position is already occupied and the player will be asked to pick a different position. If the piece can be placed there, meaning if the position the player chose is an empty position 'X', the predicate **move/5** will be called and will place the chosen piece on the chosen position.
 
 ## Computer Play
 After calling the predicate **display_game_computer_PC_only/2** or **display_game_computer/2**,
-auxiliary functions are used to determine where the pc will play and the predicate **valid_move/6** will validade that move or not.
+auxiliar functions are used to determine where the PC will play and the predicate **valid_move/6** will validade that move or not, by checking if the position is empty.
 
 ### Conclusions
-In this project we implement the board game Alliances was developed in Prolog language using the development system Sicstus.
+In this project we implemented the board game Alliances was developed in Prolog language using the development system Sicstus.
 It's playable by Human vs Human, PC vs PC and Human vs PC.
-The game was quite complex, and due to lack of time and other reasons, the validation of win condition is not fully complete in this delivery.
+We believe we achieved some of the main goals of this project, however due to time constraints we were not able to debug the many functions created to verify the win conditions. We also didn't implement the level of difficulties for the PC mode, meaning the PC always plays on the same level.
+Despite not having been able to finish the implementation of those features we believe the final project still allows the players to have a similar experience to playing the real board game from which this game was inspired.
 
 ### Bibliography
 
